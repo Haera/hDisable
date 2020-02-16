@@ -1,5 +1,29 @@
 #include "define.h"
 
+static LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
+	BOOL fEatKeystroke = false;
+
+	if (nCode == HC_ACTION) {
+		switch (wParam) {
+		case WM_KEYDOWN:
+		case WM_KEYUP:
+			PKBDLLHOOKSTRUCT p = (PKBDLLHOOKSTRUCT)lParam;
+			if (fEatKeystroke = (p->vkCode == KEY_H)) {
+				printf("h blocked");
+				//sendWarningMessage();
+				return 1;
+			}
+			if (fEatKeystroke = (p->vkCode == KEY_END)) {
+				exit(0);
+			}
+			break;
+		}
+	}
+	// if true-> 1
+	// if false-> again bitch
+	return(fEatKeystroke ? 1 : CallNextHookEx(NULL, nCode, wParam, lParam));
+}
+
 /*
 LRESULT CALLBACK LLKeyboardProc(int nCode, WPARAM wParam, LPARAM lParam);
 

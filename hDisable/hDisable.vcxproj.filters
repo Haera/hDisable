@@ -13,13 +13,19 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Subroutines">
+      <UniqueIdentifier>{9905b201-0d98-490d-a48f-e30eba85e89f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="functions.cpp">
+      <Filter>Source Files\Subroutines</Filter>
+    </ClCompile>
     <ClCompile Include="keyhook.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Subroutines</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
