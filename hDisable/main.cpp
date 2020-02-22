@@ -17,9 +17,14 @@ int main(int argc, const char* argv[]) {
 	HHOOK lowlevelKybd = SetWindowsHookEx(WH_KEYBOARD_LL, LowLevelKeyboardProc, 0, 0);
 	MSG msg;
 
-	while (!GetMessage(&msg, NULL, NULL, NULL)) {
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
+	while (true) {
+		// PeekMessage checks, GetMessage BLOCK thread
+		if (PeekMessage(&msg, NULL, 0, 0, 0) > 0) {
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		runClipboardCheck();
+		Sleep(5);
 	}
 
 	UnhookWindowsHookEx(lowlevelKybd);

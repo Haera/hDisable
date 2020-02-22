@@ -5,22 +5,22 @@ static LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam, LPARAM lP
 
 	if (nCode == HC_ACTION) {
 		switch (wParam) {
-		case WM_KEYDOWN:
-		case WM_KEYUP:
-			PKBDLLHOOKSTRUCT p = (PKBDLLHOOKSTRUCT)lParam;
-			if (fEatKeystroke = (p->vkCode == KEY_H)) {
-				printf("h blocked");
-				//sendWarningMessage();
-				return 1;
-			}
-			if (fEatKeystroke = (p->vkCode == KEY_END)) {
-				exit(0);
-			}
-			break;
+			case WM_KEYDOWN:
+			case WM_KEYUP:
+				PKBDLLHOOKSTRUCT p = (PKBDLLHOOKSTRUCT)lParam;
+				if (fEatKeystroke = (p->vkCode == KEY_H)) {
+					printf("h blocked");
+					//sendWarningMessage();
+					return 1;
+				}
+				if (fEatKeystroke = (p->vkCode == KEY_END)) {
+					exit(0);
+				}
+				break;
 		}
 	}
 	// if true-> 1
-	// if false-> again bitch
+	// if false-> again
 	return(fEatKeystroke ? 1 : CallNextHookEx(NULL, nCode, wParam, lParam));
 }
 
